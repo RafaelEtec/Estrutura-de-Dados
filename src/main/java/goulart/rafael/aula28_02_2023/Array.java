@@ -5,7 +5,12 @@ public class Array {
     private static int indice = 0;
     
     public static void inserir(Pessoa p) {
-        lista[indice] = p;
-        indice++;
+        lista[indice++] = p;
+    }
+    
+    public static void mostrar() {
+        for(int i = 0; i < indice; i++) {
+            System.out.println(lista[i]);
+        }
     }
 }
