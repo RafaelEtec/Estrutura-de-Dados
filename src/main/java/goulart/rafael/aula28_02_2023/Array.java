@@ -11,14 +11,57 @@ public class Array {
      * @param p 
      */
     public static void inserir(Pessoa p) {
+        if (indice == lista.length) {
+            lista = alocarNovoArray();
+        }
         p.setId(indice + 1);
         lista[indice++] = p;
     }
     
-    public static void mostrar() {
-        for(int i = 0; i < indice; i++) {
+    public static String mostrar() {
+        String txt = "";
+        for (int i = 0; i < indice; i++) {
             System.out.println(lista[i]);
             System.out.println("");
+            txt = txt + lista[i].toString() + "\n";
         }
+        
+        return txt;
+    }
+    
+    private static Pessoa[] alocarNovoArray() {
+        Pessoa[] novo = new Pessoa[lista.length + 3];
+        
+        System.arraycopy(lista, 0, novo, 0, lista.length);
+        
+        return novo;
+    }
+    
+    public static int buscar(int id) {
+        int inicio = 0, fim = indice - 1, meio;
+        
+        while (inicio <= fim) {
+            meio = (fim + inicio) / 2;
+            if (id == lista[meio].getId()) {
+                return meio;
+            } else if (id > lista[meio].getId()) {
+                inicio = meio + 1;
+            } else {
+                fim = meio - 1;
+            }
+        }
+        return -1;
+    }
+    
+    public static boolean remover(int id) {
+        int rem = buscar(id);
+        if (rem != -1) {
+            for (int i = rem; i < indice - 1; i++) {
+                lista[i] = lista[i + 1];
+            }
+            indice--;
+            return true;
+        }
+        return false;
     }
 }
