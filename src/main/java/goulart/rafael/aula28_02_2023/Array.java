@@ -64,4 +64,17 @@ public class Array {
         }
         return false;
     }
+    
+    public static void ordenar() {
+        for (int i = 1; i < indice; i++) {
+            Pessoa temp = lista[i];
+            int j = i;
+            while (j > 0 && lista[j - 1].getNome().compareTo(temp.getNome()) {
+                    ) {
+                lista[j] = lista[j - 1];
+                j--;
+            }
+            lista[j] = temp;
+        }
+    }
 }

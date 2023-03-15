@@ -1,5 +1,9 @@
 package goulart.rafael.aula28_02_2023;
 
+/**
+ * por Rafael Ferreira Goulart
+ */
+
 public class Pessoa {
     private String nome;
     private int idade;
