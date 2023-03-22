@@ -1,25 +1,30 @@
-package goulart.rafael.aula28_02_2023;
-
-public class Array {
-    private static Pessoa[] lista = new Pessoa[5];
-    private static int indice = 0;
+package goulart.rafael.aula21_03_2023;
+/**
+ *
+ * @author rafael.fgoulart1
+ */
+public class ArrayTeste {
+    private static Teste[] lista = new Teste[5];
+    private static int ind = 0;
     
-    /**
-     * Realiza inserçào de objetos do tipo Pessoa
-     * no Array lista.
-     * @param p 
-     */
-    public static void inserir(Pessoa p) {
-        if (indice == lista.length) {
+    public static void inserir(Teste t) {
+        if (ind == lista.length) {
             lista = alocarNovoArray();
         }
-        p.setId(indice + 1);
-        lista[indice++] = p;
+        t.setId(ind + 1);
+        lista[ind++] = t;
+    }
+    
+    private static Teste[] alocarNovoArray() {
+        Teste[] novo = new Teste[lista.length + 3];
+        System.arraycopy(lista, 0, novo, 0, lista.length);
+    
+        return novo;
     }
     
     public static String mostrar() {
         String txt = "";
-        for (int i = 0; i < indice; i++) {
+        for (int i = 0; i < ind; i++) {
             System.out.println(lista[i]);
             System.out.println("");
             txt = txt + lista[i].toString() + "\n";
@@ -28,17 +33,8 @@ public class Array {
         return txt;
     }
     
-    private static Pessoa[] alocarNovoArray() {
-        Pessoa[] novo = new Pessoa[lista.length + 3];
-        
-        System.arraycopy(lista, 0, novo, 0, lista.length);
-        
-        return novo;
-    }
-    
     public static int buscar(int id) {
-        int inicio = 0, fim = indice - 1, meio;
-        
+        int inicio = 0, fim = ind - 1, meio;
         while (inicio <= fim) {
             meio = (fim + inicio) / 2;
             if (id == lista[meio].getId()) {
@@ -49,16 +45,17 @@ public class Array {
                 fim = meio - 1;
             }
         }
+        
         return -1;
     }
     
     public static boolean remover(int id) {
         int rem = buscar(id);
         if (rem != -1) {
-            for (int i = rem; i < indice - 1; i++) {
+            for (int i = rem; i < ind - 1; i++) {
                 lista[i] = lista[i + 1];
             }
-            indice--;
+            ind--;
             return true;
         }
         return false;
