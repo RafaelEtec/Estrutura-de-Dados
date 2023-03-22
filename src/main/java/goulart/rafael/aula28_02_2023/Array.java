@@ -4,7 +4,6 @@ public class Array {
     private static Pessoa[] lista = new Pessoa[5];
     private static int indice = 0;
     
-    
     /**
      * Realiza inserçào de objetos do tipo Pessoa
      * no Array lista.
