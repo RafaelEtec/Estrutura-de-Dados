@@ -17,4 +17,13 @@ public class Lista {
             aux = atual;
         }
     }
+    
+    public void mostrar() {
+        Elemento e = inicio;
+        
+        while (e != null) {
+            System.out.println(e.getObjeto());
+            e = e.getProx();
+        }
+    }
 }
